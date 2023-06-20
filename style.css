@@ -1,0 +1,38 @@
+.mainContainer{
+    border:solid black;
+    height:95vh;
+    display:flex;
+}
+.leftContainer,.rightContainer{
+    border:solid green;
+    width:33%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.dialogue1,.dialogue2{
+    border:solid black;
+    width:250px;
+    height:50px;
+    margin:20px;
+}
+.playerShip,.alienShip{
+    border:solid purple;
+    height:220px;
+    width:220px;
+    align-self:center;
+}
+.health1,.health2{
+    border:solid yellow;
+    align-self:center;
+    margin:20px;
+}
+.centerContainer{
+    border: solid red;
+    width:33%
+}
+.rightContainer{
+    border:solid blue;
+    width:33%;
+}
