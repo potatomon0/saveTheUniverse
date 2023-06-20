@@ -3,7 +3,7 @@
     //firepower === 5
     //accuracy === 0.7
 let player1 = {
-    health:10,
+    health:6,
     hull:20,
     firepower:5,
     accuracy:0.7
@@ -48,7 +48,7 @@ const alien3 = new alien();
 const alien4 = new alien();
 const alien5 = new alien();
 a0 ={
-    health:10,
+    health:40,
     hull:alien0.randHull(),
     firepower:alien0.randfirepower(),
     accuracy:alien0.randaccuracy()
@@ -56,7 +56,12 @@ a0 ={
 let dialogue1 = document.querySelector('.dialogue1');
 let dialogue2 = document.querySelector('.dialogue2');
 let playerHealth = document.querySelector('.hp1');
-let alienHealth = document.querySelector('.hp2')
+let alienHealth = document.querySelector('.hp2');
+let playerBtn = document.querySelector('.attack1');
+let alienBtn = document.querySelector('.attack2');
+let centerContainer = document.querySelector('.centerContainer');
+let playerTurn = true;
+let alienTurn = false;
 // console.log(a0.health-10)
     //example of using accuracy:
     // if(Math.random()<aliem[0].accuracy){
@@ -81,11 +86,43 @@ const alienAtk=()=>{
     console.log(player1.health);
     return player1.health;
 }
-console.log(alienAtk())
-const results=()=>{
+const checkHP=()=>{
     if(player1.health < 1){
         dialogue1.innerHTML = "You Lose! Humanity is destroyed."
+        playerBtn.innerHTML = ''
     }else if(a0.health<1){
         dialogue2.innerHTML = "My superior will obliterate you!"
+        retreat();
+    }
+}
+const retreat=()=>{
+    // centerContainer.innerHTML = ""
+    let retreatTxt = document.createElement('p')
+    retreatTxt.setAttribute('class','retreatTxt')
+    retreatTxt.innerHTML = 'Do you wish to retreat? Remember, humanity is at steak'
+    centerContainer.append(retreatTxt)
+    let yesBtn = document.createElement('button');
+    yesBtn.setAttribute('class','yesBtn');
+    yesBtn.innerHTML = 'Yes'
+    centerContainer.append(yesBtn)
+    let noBtn = document.createElement('button');
+    noBtn.setAttribute('class','noBtn');
+    noBtn.innerHTML = 'No'
+    centerContainer.append(noBtn)
+}
+const playerMove =()=>{
+    if(playerTurn === true && alienTurn ===false){
+        playerAtk();
+        playerTurn = false;
+        alienTurn = true;
+        checkHP();
+    }
+}
+const alienMove=()=>{
+    if(playerTurn===false && alienTurn === true){
+        alienAtk();
+        playerTurn = true;
+        alienTurn=false;
+        checkHP();
     }
 }

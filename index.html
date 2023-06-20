@@ -13,22 +13,27 @@
             <div class="leftContainer">
                 <div class="dialogue1"></div>
                 <div class="playerShip">
-                    <img src="" alt="" class="player">
+                    <img src="https://media.tenor.com/pXVD0uOHIncAAAAM/rocket-flying.gif" alt="" class="playerPic">
                 </div>
                 <div class="health1">Health: <span class="hp1"></span></div>
-                <button class="attack" onclick="playerAtk();results()">CRUSH THEM!</button>
+                <button class="attack1" onclick="playerMove()">CRUSH THEM!</button>
             </div>
-            <div class="centerContainer"></div>
+            <div class="centerContainer">
+                <div class="retreat">
+                    <!-- <button class="yes">Yes</button>
+                    <button class="no">Yes</button> -->
+                </div>
+            </div>
             <div class="rightContainer">
                 <div class="dialogue2"></div>
-                <div class="alienShip"></div>
+                <div class="alienShip">
+                    <img src="https://38.media.tumblr.com/a55b20d4966519ad2cfd838cf35887c1/tumblr_n6b0ji9Fyh1r0gffeo1_400.gif" alt="" class="alienPic">
+                </div>
                 <div class="health2">Health: <span class="hp2"></span></div>
-                <button class="attack" onclick="alienAtk();results()">DESTROY EM!</button>
+                <button class="attack2" onclick="alienMove()">DESTROY EM!</button>
             </div>
         </div>
         <div class="bottomContainer">
-            
-            
         </div>
         <script src="app.js" async defer></script>
     </body>

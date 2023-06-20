@@ -2,6 +2,8 @@
     border:solid black;
     height:95vh;
     display:flex;
+    background-color:black;
+    color:white;
 }
 .leftContainer,.rightContainer{
     border:solid green;
@@ -10,6 +12,11 @@
     flex-direction:column;
     justify-content:center;
     align-items:center;
+}
+.centerContainer{
+    background-image: url('https://art.pixilart.com/bead2f898c25c42.gif');
+    background-size:contain;
+    /* background-repeat:none; */
 }
 .dialogue1,.dialogue2{
     border:solid black;
@@ -22,7 +29,14 @@
     height:220px;
     width:220px;
     align-self:center;
+    overflow:hidden;
+    text-align:center;
+    display:flex;
+    justify-content:center;
 }
+/* .alienPic,.playerPic{
+    height:100%;
+} */
 .health1,.health2{
     border:solid yellow;
     align-self:center;
@@ -30,9 +44,30 @@
 }
 .centerContainer{
     border: solid red;
-    width:33%
+    width:33%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 .rightContainer{
     border:solid blue;
     width:33%;
+}
+.yesBtn,.noBtn{
+    height:25px;
+    margin:10px;
+    background-color: white;
+    border-color: white;
+}
+.yesBtn:hover,.noBtn:hover{
+    background-color: green;
+    color:white;
+}
+.retreatTxt{
+    font-size: 25px;
+    color:rgb(73, 220, 236)
+}
+.dialogue1,.dialogue2{
+    color:red;
+    font-size:25px;
 }
