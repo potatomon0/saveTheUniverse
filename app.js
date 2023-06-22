@@ -32,7 +32,7 @@ class alien {
         return newHull;
     }
     randfirepower(){
-        // this.firepower = Math.random()*(4-2)+2;
+        // this.firepower = Math.random()*(4-2+1)+2;
         // let newFirepower = Math.floor(this.hull)
         // return newFirepower;
         return 4;
@@ -166,6 +166,8 @@ const alienMove=()=>{
 }
 let retreatTxt = document.createElement('p')
 const retreat=()=>{
+    playerTurn = true;
+    alienTurn = false;
     retreatTxt.setAttribute('class','retreatTxt')
     retreatTxt.innerHTML = 'Do you wish to retreat? Remember, humanity is at steak'
     buttonContainer.append(retreatTxt)
@@ -178,7 +180,7 @@ const retreat=()=>{
     noBtn.setAttribute('class','noBtn');
     noBtn.innerHTML = 'No'
     buttonContainer.append(noBtn)
-    noBtn.setAttribute('onclick','switchAlien(currentAlien.img)');
+    noBtn.setAttribute('onclick','switchAlien(currentAlien.img);start()');
 }
 // const clearCenter=()=>{
 //     retreatTxt.innerHTML = "";
