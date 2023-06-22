@@ -1,9 +1,65 @@
+@keyframes moveBallLeft {
+    0%{
+        transform: translateX(-10px);
+        opacity:100%;
+    }
+    95%{
+        opacity:100%;
+    }
+    100%{
+        transform: translateX(450px);
+        opacity:0%;
+    }
+}
+@keyframes moveBallRight{
+    0%{
+        transform:translateX(0px);
+        opacity:100%
+    }
+    95%{
+        opacity:100%;
+    }
+    100%{
+        transform: translateX(-450px);
+        opacity:0%;
+    }
+}
 .mainContainer{
     border:solid black;
     height:95vh;
     display:flex;
     background-color:black;
     color:white;
+}
+.shoot{
+    border:solid green;
+    height:50px;
+    width:300px;
+    display:flex;
+    justify-content: space-between;
+    align-self:flex-start;
+}
+.shootLeft,.shootRight{
+    border:solid pink;
+    height:50px;
+    width:50px;
+}
+.ballLeft{
+    border:solid purple;
+    height:100%;
+    width:100%;
+    animation: moveBallLeft .6s;
+    animation-fill-mode:forwards;
+}
+.ballRight{
+    border:solid purple;
+    height:100%;
+    width:100%;
+    animation: moveBallRight .6s;
+    animation-fill-mode:forwards;
+}
+.ballRight{
+    border:solid purple;
 }
 .leftContainer,.rightContainer{
     border:solid green;
@@ -81,4 +137,7 @@
     width:100%;
     height:100%;
     border:solid lime;
+}
+.stats2{
+    color:white;
 }

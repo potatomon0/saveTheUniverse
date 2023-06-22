@@ -3,8 +3,8 @@
 //firepower === 5
 //accuracy === 0.7
 let player1 = {
-    hull: 20,
-    firepower: 2,
+    hull: 100,
+    firepower: 5,
     accuracy: 0.7
 }
 //alien ships:
@@ -26,16 +26,14 @@ class alien {
         this.accuracy = accuracy;
     }
     randHull() {
-        // this.hull = Math.random() * (10 - 5) + 5;
-        // let newHull = Math.floor(this.hull);
-        // return newHull;
-        return 4;
+        this.hull = Math.random() * (20 - 10) + 10;
+        let newHull = Math.floor(this.hull);
+        return newHull;
     }
     randfirepower() {
-        // this.firepower = Math.random()*(4-2+1)+2;
-        // let newFirepower = Math.floor(this.hull)
-        // return newFirepower;
-        return 4;
+        this.firepower = Math.random()*(5-2)+2;
+        let newFirepower = Math.floor(this.hull)
+        return newFirepower;
     }
     randaccuracy() {
         this.accuracy = Math.random() * (0.8 - 0.6) + 0.6;
@@ -59,16 +57,14 @@ let a0 = {
 let a1 = {
     name: 'UpgradeO',
     img: 'https://media.tenor.com/2F0hFbYUP3IAAAAM/rubbing-hands-evil-smile.gif',
-    // hull: alien1.randHull(),
-    hull: 6,
+    hull: alien1.randHull(),
     firepower: alien1.randfirepower(),
     accuracy: alien1.randaccuracy()
 }
 let a2 = {
     name: 'AngryO',
     img: 'https://i.pinimg.com/originals/a9/d8/cf/a9d8cf979e970d0a94d3c89d5c9992af.gif',
-    // hull: alien2.randHull(),
-    hull: 7,
+    hull: alien2.randHull(),
     firepower: alien2.randfirepower(),
     accuracy: alien2.randaccuracy()
 }
@@ -101,6 +97,8 @@ let alienName = document.querySelector('.alienName')
 let buttonContainer = document.querySelector('.buttonContainer');
 let alienShip = document.querySelector('.alienShip')
 let alienImg = document.querySelector('.alienImg')
+let stats1 = document.querySelector('.stats1')
+let stats2 = document.querySelector('.stats2')
 let playerTurn = true;
 let alienTurn = false;
 let damageLog = document.querySelector('.damageLog')
@@ -110,8 +108,8 @@ const start = () => {
     alienHealth.innerHTML = alienList[count].hull;
     playerHealth.innerHTML = player1.hull;
     alienName.innerHTML = alienList[count].name;
+    resetScreen();
 }
-// console.log(a0.health-10)
 //example of using accuracy:
 // if(Math.random()<aliem[0].accuracy){
 // console.log('You have been hit!')
@@ -135,16 +133,42 @@ const alienAtk = () => {
     damageLog.innerHTML = ""
     damageLog.append(`${alienList[count].name} did ${alienList[count].firepower} damage`)
 }
+let shootLeft = document.querySelector(".shootLeft")
+let shootRight = document.querySelector(".shootRight")
+const fireBallLeft = ()=>{
+    shootLeft.innerHTML = ""
+    let ballLeft = document.createElement('img')
+    ballLeft.setAttribute('src','https://i.pinimg.com/originals/15/1b/85/151b8518ed9931d583f94adb74a4ac33.gif')
+    ballLeft.setAttribute('class','ballLeft')
+    shootLeft.append(ballLeft)
+}
+const fireBallRight = ()=>{
+    shootRight.innerHTML = ""
+    let ballRight = document.createElement('img')
+    ballRight.setAttribute('src','https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/550d9157-b095-4115-9585-eb34273e960c/dbe2upi-913e0b7c-42a6-4846-b387-cf4e4c46267c.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzU1MGQ5MTU3LWIwOTUtNDExNS05NTg1LWViMzQyNzNlOTYwY1wvZGJlMnVwaS05MTNlMGI3Yy00MmE2LTQ4NDYtYjM4Ny1jZjRlNGM0NjI2N2MuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.yc9sZi5_J1Nd3DambxV5OXZlEqXtZm6ixWF-UEA2nEM')
+    ballRight.setAttribute('class','ballRight')
+    shootRight.append(ballRight)
+}
 const playerMove = () => {
     console.log(`Player1 stats: HP = ${player1.hull}, Firepower = ${player1.firepower}, Accuracy = ${player1.accuracy}`)
     if (playerTurn === true && alienTurn === false) {
         if (alienList[count].hull > player1.firepower) {
+            let randNum = (Math.floor(Math.random()*(8-6)+6))/10
+            if(randNum >= player1.accuracy){
             playerAtk();
+            fireBallLeft();
             playerTurn = false;
             alienTurn = true;
+            }else{
+                damageLog.innerHTML = `player1 did ${player1.firepower} damage but ${alienList[count].name} dodged the attack!`
+                fireBallLeft();
+                playerTurn = false;
+                alienTurn = true;
+            }
         } else if (alienList[count].hull <= player1.firepower) {
             damageLog.innerHTML = ""
             damageLog.append(`player1 did ${player1.firepower} damage`)
+            fireBallLeft();
             dialogue2.innerHTML = "My superior will obliterate you!";
             alienHealth.innerHTML = "0"
             count++;
@@ -155,9 +179,18 @@ const playerMove = () => {
 const alienMove = () => {
     if (playerTurn === false && alienTurn === true) {
         if (player1.hull > alienList[count].firepower) {
+            let randNum = (Math.floor(Math.random()*(10-6 +1)+6))/10
+            if(randNum >= alienList[count].accuracy){
             alienAtk();
+            fireBallRight()
             playerTurn = true;
             alienTurn = false;
+        } else{
+            damageLog.innerHTML = `${alienList[count].name} did ${alienList[count].firepower} damage but player1 dodged the attack!'`
+            fireBallRight()
+                playerTurn = true;
+                alienTurn = false;
+        }
         } else if (player1.hull <= alienList[count].firepower) {
             alienHealth.innerHTML = "0"
             dialogue1.innerHTML = "You Lose! Humanity is destroyed."
@@ -188,19 +221,17 @@ const flee = () =>{
     alert('You had nowhere to run, the aliens caught up and blew up your ship')
     buttonContainer.innerHTML = ''
 }
-// const switchAlien = (temp) => {
-//     let alienPic = document.createElement('img')
-//     alienPic.setAttribute('src', temp)
-//     alienShip.replaceWith(alienPic)
-// }
-const plugNSwitch=(temp)=>{
-    alienHealth.innerHTML = temp.hull;//switch HP
-    alienName.innerHTML = temp.name;//switch name
-    // let alienPic = document.createElement('img');
-    alienImg.setAttribute('src',temp.img);
-    // alienImg.replaceWith(alienPic)//switch picture
+const resetScreen=()=>{
+    stats1.innerHTML = `Player stats: HP = ${player1.hull}, firepower = ${player1.firepower}, accuracy = ${player1.accuracy}`
+    stats2.innerHTML = `Player stats: HP = ${alienList[count].hull}, firepower = ${alienList[count].firepower}, accuracy = ${alienList[count].accuracy}`
     buttonContainer.innerHTML = ''
     dialogue2.innerHTML = ''
     damageLog.innerHTML = ''
+}
+const plugNSwitch=(temp)=>{
+    alienHealth.innerHTML = temp.hull;//switch HP
+    alienName.innerHTML = temp.name;//switch name
+    alienImg.setAttribute('src',temp.img);
     player1.firepower = player1.firepower;
+    resetScreen();
 }
