@@ -3,7 +3,7 @@
 //firepower === 5
 //accuracy === 0.7
 let player1 = {
-    hull: 100,
+    hull: 20,
     firepower: 5,
     accuracy: 0.7
 }
@@ -26,7 +26,7 @@ class alien {
         this.accuracy = accuracy;
     }
     randHull() {
-        this.hull = Math.random() * (20 - 10) + 10;
+        this.hull = Math.random() * (6 - 3) + 3;
         let newHull = Math.floor(this.hull);
         return newHull;
     }
@@ -48,21 +48,21 @@ const alien3 = new alien();
 const alien4 = new alien();
 const alien5 = new alien();
 let a0 = {
-    name: 'Oblierator',
+    name: 'Apocalymon',
     img: 'https://38.media.tumblr.com/a55b20d4966519ad2cfd838cf35887c1/tumblr_n6b0ji9Fyh1r0gffeo1_400.gif',
     hull: alien0.randHull(),
     firepower: alien0.randfirepower(),
     accuracy: alien0.randaccuracy()
 }
 let a1 = {
-    name: 'UpgradeO',
+    name: 'OblieratorP',
     img: 'https://media.tenor.com/2F0hFbYUP3IAAAAM/rubbing-hands-evil-smile.gif',
     hull: alien1.randHull(),
     firepower: alien1.randfirepower(),
     accuracy: alien1.randaccuracy()
 }
 let a2 = {
-    name: 'AngryO',
+    name: 'UpgradedP',
     img: 'https://i.pinimg.com/originals/a9/d8/cf/a9d8cf979e970d0a94d3c89d5c9992af.gif',
     hull: alien2.randHull(),
     firepower: alien2.randfirepower(),
