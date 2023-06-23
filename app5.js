@@ -31,8 +31,8 @@ class alien {
         return newHull;
     }
     randfirepower() {
-        this.firepower = Math.random()*(5-2)+2;
-        let newFirepower = Math.floor(this.hull)
+        this.firepower = Math.random() * (5 - 2) + 2;
+        let newFirepower = Math.floor(this.firepower)
         return newFirepower;
     }
     randaccuracy() {
@@ -82,7 +82,13 @@ let a4 = {
     firepower: alien4.randfirepower(),
     accuracy: alien4.randaccuracy()
 }
-let a5 = {}
+let a5 = {
+    name: 'BOSS',
+    img:'https://media1.giphy.com/media/lY1F6BJjbRO3m/200w.gif?cid=6c09b9524btdp0md6e1kd7l389priniwp25ppp0orsohli7j&ep=v1_gifs_search&rid=200w.gif&ct=g',
+    hull: alien5.randHull(),
+    firepower:alien5.randfirepower(),
+    accuracy:alien5.randaccuracy()
+}
 const alienList = [a0, a1, a2, a3, a4, a5]
 let count = 0;
 let currentAlien = alienList[count];
@@ -135,12 +141,21 @@ const alienAtk = () => {
 }
 let shootLeft = document.querySelector(".shootLeft")
 let shootRight = document.querySelector(".shootRight")
+let explosion = document.querySelector('.explosion')
+const explode = () =>{
+    let burst = document.createElement('img');
+    burst.setAttribute('class','pow')
+    burst.setAttribute('src','https://i.gifer.com/3iCN.gif')
+    explosion.append(burst)
+}
 const fireBallLeft = ()=>{
     shootLeft.innerHTML = ""
+    explosion.innerHTML = ""
     let ballLeft = document.createElement('img')
     ballLeft.setAttribute('src','https://i.pinimg.com/originals/15/1b/85/151b8518ed9931d583f94adb74a4ac33.gif')
     ballLeft.setAttribute('class','ballLeft')
     shootLeft.append(ballLeft)
+    explode();
 }
 const fireBallRight = ()=>{
     shootRight.innerHTML = ""
@@ -153,7 +168,7 @@ const playerMove = () => {
     console.log(`Player1 stats: HP = ${player1.hull}, Firepower = ${player1.firepower}, Accuracy = ${player1.accuracy}`)
     if (playerTurn === true && alienTurn === false) {
         if (alienList[count].hull > player1.firepower) {
-            let randNum = (Math.floor(Math.random()*(8-6)+6))/10
+            let randNum = (Math.floor(Math.random()*(10-6)+6))/10
             if(randNum >= player1.accuracy){
             playerAtk();
             fireBallLeft();
@@ -223,7 +238,7 @@ const flee = () =>{
 }
 const resetScreen=()=>{
     stats1.innerHTML = `Player stats: HP = ${player1.hull}, firepower = ${player1.firepower}, accuracy = ${player1.accuracy}`
-    stats2.innerHTML = `Player stats: HP = ${alienList[count].hull}, firepower = ${alienList[count].firepower}, accuracy = ${alienList[count].accuracy}`
+    stats2.innerHTML = `${alienList[count].name} stats: HP = ${alienList[count].hull}, firepower = ${alienList[count].firepower}, accuracy = ${alienList[count].accuracy}`
     buttonContainer.innerHTML = ''
     dialogue2.innerHTML = ''
     damageLog.innerHTML = ''

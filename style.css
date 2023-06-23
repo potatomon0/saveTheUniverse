@@ -7,7 +7,7 @@
         opacity:100%;
     }
     100%{
-        transform: translateX(450px);
+        transform: translateX(300px);
         opacity:0%;
     }
 }
@@ -20,9 +20,53 @@
         opacity:100%;
     }
     100%{
-        transform: translateX(-450px);
+        transform: translateX(-300px);
         opacity:0%;
     }
+}
+@keyframes powow {
+    0%{
+        height:0px;
+        width:0px;
+        opacity:0;
+    }
+    29%{
+        height:0px;
+        width:0px;
+        opacity:0;
+    }
+    30%{
+        height:200px;
+        width:200px;
+        opacity:1;
+    }
+    99%{
+        height:200px;
+        width:200px;
+        opacity:1;
+    }
+    100%{
+        height:0px;
+        width:0px;
+        opacity:0;
+    }
+}
+.explosion{
+    border:solid orange;
+    height:40px;
+    width:220px;
+    display:flex;
+}
+.pow{
+    /* border:solid red; */
+    height:200px;
+    width:200px;
+    position:absolute;
+    animation: powow 1.3s;
+    /* animation-delay: powow 3s; */
+    animation-fill-mode:forwards;
+    
+    
 }
 .mainContainer{
     border:solid black;
@@ -30,29 +74,31 @@
     display:flex;
     background-color:black;
     color:white;
+    text-align:center;
 }
 .shoot{
-    border:solid green;
+    /* border:solid green; */
     height:50px;
     width:300px;
     display:flex;
     justify-content: space-between;
     align-self:flex-start;
+    margin-bottom:90px;
 }
 .shootLeft,.shootRight{
-    border:solid pink;
-    height:50px;
-    width:50px;
+    /* border:solid pink; */
+    height:70px;
+    width:70px;
 }
 .ballLeft{
-    border:solid purple;
+    /* border:solid purple; */
     height:100%;
     width:100%;
     animation: moveBallLeft .6s;
     animation-fill-mode:forwards;
 }
 .ballRight{
-    border:solid purple;
+    /* border:solid purple; */
     height:100%;
     width:100%;
     animation: moveBallRight .6s;
@@ -62,7 +108,7 @@
     border:solid purple;
 }
 .leftContainer,.rightContainer{
-    border:solid green;
+    /* border:solid green; */
     width:33%;
     display:flex;
     flex-direction:column;
@@ -81,7 +127,7 @@
     margin:20px;
 }
 .playerShip,.alienShip{
-    border:solid purple;
+    /* border:solid purple; */
     height:220px;
     width:220px;
     align-self:center;
@@ -94,12 +140,12 @@
     height:100%;
 } */
 .health1,.health2{
-    border:solid yellow;
+    /* border:solid yellow; */
     align-self:center;
     margin:20px;
 }
 .centerContainer{
-    border: solid red;
+    /* border: solid red; */
     width:33%;
     display:flex;
     flex-direction:column;
@@ -107,7 +153,7 @@
     align-items:center;
 }
 .rightContainer{
-    border:solid blue;
+    /* border:solid blue; */
     width:33%;
 }
 .yesBtn,.noBtn{
@@ -117,7 +163,7 @@
     border-color: white;
 }
 .yesBtn:hover,.noBtn:hover{
-    background-color: green;
+    /* background-color: green; */
     color:white;
 }
 .retreatTxt{
@@ -129,15 +175,16 @@
     font-size:25px;
 }
 .damageLog{
-    border:solid red;
+    /* border:solid red; */
+    background-color: black;
     width:220px;
     height:70px;
 }
 .alienPic{
     width:100%;
     height:100%;
-    border:solid lime;
+    /* border:solid lime; */
 }
-.stats2{
+/* .stats2{
     color:white;
-}
+} */
