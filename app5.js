@@ -77,7 +77,7 @@ let a3 = {
 }
 let a4 = {
     name: 'PooDoo',
-    img: 'https://media4.giphy.com/media/5deNCPz78wpy62u4bk/200w.gif?cid=6c09b9524usk0cnhwwcing1p3ts6x34i1eice1gb4ye5ti4k&ep=v1_gifs_search&rid=200w.gif&ct=g',
+    img: 'https://media.tenor.com/Fzr9p9rfQRcAAAAM/poop-dancing-poop.gif',
     hull: alien4.randHull(),
     firepower: alien4.randfirepower(),
     accuracy: alien4.randaccuracy()
@@ -181,13 +181,15 @@ const playerMove = () => {
                 alienTurn = true;
             }
         } else if (alienList[count].hull <= player1.firepower) {
+            if(a5.hull <= player1.firepower){
             damageLog.innerHTML = ""
             damageLog.append(`player1 did ${player1.firepower} damage`)
             fireBallLeft();
             dialogue2.innerHTML = "My superior will obliterate you!";
             alienHealth.innerHTML = "0"
             count++;
-            retreat();
+                retreat();
+            }
         }
     }
 }
